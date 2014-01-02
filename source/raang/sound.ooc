@@ -34,10 +34,14 @@ Boombox: class {
     loops := 0
 
     new: static func -> This {
+        instance: This
         try {
-            return This new~private()
+            instance = This new~private()
         } catch (e: Exception) {
             logger error("Couldn't load audio system because of: #{e formatMessage()}")
+        }
+        if (instance) {
+            return instance
         }
         return DummyBoombox new()
     }

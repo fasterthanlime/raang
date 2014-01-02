@@ -16,6 +16,8 @@ import raang/[utils, yaml]
 
 Deck: class {
 
+    prefix := static ""
+
     group: GlAnimSet { get set }
     ticks := 1
     path: String
@@ -28,12 +30,12 @@ Deck: class {
     init: func (=path) {
         group = GlAnimSet new()
 
-        doc := parseYaml(path)
+        doc := parseYaml(prefix + path)
         if (!doc) {
             Exception new("AnimSet definition not found: %s" format(path)) throw()
         }
 
-        map := doc toMap() 
+        map := doc toMap()
         map each(|k, v|
             group put(k, loadAnim(k, v))
         )
