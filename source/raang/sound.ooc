@@ -133,8 +133,11 @@ DummyBoombox: class extends Boombox {
     playMusic: func (name: String, loops := 0)
     onMusicStops: func
     musicPlays?: func -> Bool { false }
+    musicPaused?: func -> Bool { false }
+    stopMusic: func
     playSound: func (name: String, loops := 0)
     destroy: func
+    setMute: func (mute: Bool)
 
 }
 
