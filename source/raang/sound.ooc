@@ -84,6 +84,10 @@ Boombox: class {
         bleep fadeMusic(millis)
     }
 
+    setMusicPos: func (pos: Double) {
+        bleep setMusicPos(pos)
+    }
+
     onMusicStops: func {
         currentMusic = null
     }
